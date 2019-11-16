@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-/* import "antd/dist/antd.css";
+import "antd/dist/antd.css";
 import './index.css';
 import { App } from './components/App/App'; 
-import * as serviceWorker from './serviceWorker';
-*/
+//import * as serviceWorker from './serviceWorker';
+
 
 import { Provider } from 'react-redux';
 import { store } from './helpers';
 
 ReactDOM.render(
   <Provider store={store}>
-    <div className="app"><h1>Hola</h1></div>
+    <App />
   </Provider>, 
   document.getElementById('root'));
 
