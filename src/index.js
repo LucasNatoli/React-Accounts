@@ -4,15 +4,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { App } from './components/App/App'; 
 import * as serviceWorker from './serviceWorker';
-
+*/
 
 import { Provider } from 'react-redux';
-import { store } from './helpers';*/
+import { store } from './helpers';
 
 ReactDOM.render(
-  <div>
-    <h1>Hola</h1>
-  </div>, 
+  <Provider store={store}>
+    <div className="app"><h1>Hola</h1></div>
+  </Provider>, 
   document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
