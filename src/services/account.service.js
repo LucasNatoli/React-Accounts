@@ -4,10 +4,10 @@ export const accountsService = {
     login,
     logout,
     register,
-    getAll,
+    /* getAll,
     getById,
     update,
-    delete: _delete
+    delete: _delete */
 };
 
 function login(username, password) {
@@ -27,8 +27,13 @@ function login(username, password) {
 }
 
 function logout() {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    };
     // remove user from local storage to log user out
     localStorage.removeItem('user');
+    return fetch(`${config.apiUrl}/logout`, requestOptions).then(handleResponse);
 }
 
 function register(user) {
@@ -38,7 +43,7 @@ function register(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`${config.apiUrl}/users/register`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrl}/register`, requestOptions).then(handleResponse);
 }
 
 
