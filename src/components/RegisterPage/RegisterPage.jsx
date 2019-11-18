@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Form, Icon, Input } from 'antd';
 import './RegisterPage.css'
+import { accountActions } from '../../actions'
+import { connect } from 'react-redux'
 
 class RegisterForm extends React.Component {
 
@@ -12,7 +14,8 @@ class RegisterForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                const { dispatch } = this.props;
+                dispatch(accountActions.register(values))
             }
         });
     };
@@ -187,10 +190,8 @@ class RegisterForm extends React.Component {
     }
 }
 
-const RegisterPage = Form.create({ name: 'normal_login' })(RegisterForm);
-export default RegisterPage
+const registrationForm = Form.create({ name: 'normal_login' })(RegisterForm);
 
-/*
 function mapStateToProps(state) {
     const { registering } = state.registration;
     return {
@@ -198,5 +199,5 @@ function mapStateToProps(state) {
     };
 }
 
-const connectedRegisterPage = connect(mapStateToProps)(RegisterPage);
-export { connectedRegisterPage as RegisterPage }; */
+const RegisterPage = connect(mapStateToProps)(registrationForm);
+export default RegisterPage; 
