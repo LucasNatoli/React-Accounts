@@ -45,13 +45,17 @@ function register(user) {
     
     const hash = new SHA3(512)
     hash.update(user.password)
-    user.password = hash.digest('hex')
+    const body = {
+        fullName: user.fullName,
+        email: user.email,
+        phone: user.phone,
+        password: hash.digest('hex')
+    }
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: user
+        body: JSON.stringify(body)
     };
-    console.log('requestOptions', requestOptions)
     return fetch(`${config.apiUrl}/register`, requestOptions).then(handleResponse);
 }
 
