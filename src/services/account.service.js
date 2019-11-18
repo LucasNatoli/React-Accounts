@@ -1,4 +1,7 @@
-import { authHeader, config } from '../helpers';
+import { 
+    //authHeader, 
+    config 
+} from '../helpers';
 
 export const accountsService = {
     login,
@@ -54,7 +57,7 @@ function handleResponse(response) {
         if (!response.ok) {
             if (response.status === 401) {
                 // auto logout if 401 response returned from api
-                logout();
+                // logout();
                 //TODO: Check this out => location.reload(true);
             }
 
