@@ -42,18 +42,16 @@ function logout() {
 }
 
 function register(user) {
-    let json_body = JSON.stringify(user)
-    console.log('json_body.password A: ',json_body.password)
+    
     const hash = new SHA3(512)
-    hash.update(json_body.password)
-    json_body.password = hash.digest('hex')
-    console.log('json_body.password B: ',json_body.password)
+    hash.update(user.password)
+    user.password = hash.digest('hex')
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: json_body
+        body: user
     };
-
+    console.log('requestOptions', requestOptions)
     return fetch(`${config.apiUrl}/register`, requestOptions).then(handleResponse);
 }
 
