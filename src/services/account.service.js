@@ -2,22 +2,24 @@ import {
     //authHeader, 
     config 
 } from '../helpers';
+import { SHA3 } from 'sha3'
 
 export const accountsService = {
     login,
     logout,
     register,
-    /* getAll,
-    getById,
-    update,
-    delete: _delete */
 };
 
 function login(email, password) {
+
+    const hash = new SHA3(512)
+    hash.update(password)
+    const password_hash = hash.digest('hex')
+
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password: password_hash })
     };
 
     return fetch(`${config.apiUrl}/login`, requestOptions)
@@ -40,10 +42,16 @@ function logout() {
 }
 
 function register(user) {
+    let json_body = JSON.stringify(user)
+    console.log('json_body.password A: ',json_body.password)
+    const hash = new SHA3(512)
+    hash.update(json_body.password)
+    json_body.password = hash.digest('hex')
+    console.log('json_body.password B: ',json_body.password)
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
+        body: json_body
     };
 
     return fetch(`${config.apiUrl}/register`, requestOptions).then(handleResponse);
@@ -68,44 +76,3 @@ function handleResponse(response) {
         return data;
     });
 }
-
-/* 
-function update(user) {
-    const requestOptions = {
-        method: 'PUT',
-        headers: { ...authHeader(), 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
-    };
-
-    return fetch(`${config.apiUrl}/users/${user.id}`, requestOptions).then(handleResponse);;
-}
-
-// prefixed function name with underscore because delete is a reserved word in javascript
-function _delete(id) {
-    const requestOptions = {
-        method: 'DELETE',
-        headers: authHeader()
-    };
-
-    return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
-}
- */
-
- /* 
-function getAll() {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
-}
-
-function getById(id) {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
-} */
