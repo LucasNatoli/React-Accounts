@@ -1,2 +1,2 @@
-export * from './alert.actions';
+export * from './notify.actions';
 export * from './account.actions';
