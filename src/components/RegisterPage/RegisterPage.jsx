@@ -113,7 +113,7 @@ class RegisterForm extends React.Component {
         return (
             <Form {...formItemLayout} onSubmit={this.handleSubmit} className="register-form">
                 <Form.Item label="Full Name">
-                    {getFieldDecorator('fullName', {
+                    {getFieldDecorator('fullname', {
                         rules: [{ required: true, message: 'Please input your full name!' }],
                     })(
                         <Input
