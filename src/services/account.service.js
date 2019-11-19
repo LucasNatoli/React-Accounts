@@ -46,7 +46,7 @@ function register(user) {
     const hash = new SHA3(512)
     hash.update(user.password)
     const body = {
-        fullName: user.fullName,
+        fullname: user.fullname,
         email: user.email,
         phone: user.phone,
         password: hash.digest('hex')

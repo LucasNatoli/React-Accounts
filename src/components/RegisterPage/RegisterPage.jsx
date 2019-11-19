@@ -43,46 +43,6 @@ class RegisterForm extends React.Component {
         callback();
     };
 
-
-    /*     constructor(props) {
-            super(props);
-    
-            this.state = {
-                user: {
-                    firstName: '',
-                    lastName: '',
-                    username: '',
-                    password: ''
-                },
-                submitted: false
-            };
-    
-            this.handleChange = this.handleChange.bind(this);
-            this.handleSubmit = this.handleSubmit.bind(this);
-        }
-    
-        handleChange(event) {
-            const { name, value } = event.target;
-            const { user } = this.state;
-            this.setState({
-                user: {
-                    ...user,
-                    [name]: value
-                }
-            });
-        }
-    
-        handleSubmit(event) {
-            event.preventDefault();
-    
-            this.setState({ submitted: true });
-            const { user } = this.state;
-            const { dispatch } = this.props;
-            if (user.firstName && user.lastName && user.username && user.password) {
-                dispatch(accountActions.register(user));
-            }
-        } */
-
     render() {
 
         const { getFieldDecorator } = this.props.form;
