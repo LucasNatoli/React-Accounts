@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { history } from '../../helpers';
 import { notifyActions } from '../../actions';
@@ -24,13 +24,13 @@ class App extends React.Component {
     if (notify && notify.message) { Notify(notify) }
     return (
       <div className="accounts-app">
-        <BrowserRouter history={history}>
+        <Router>
           <Switch>
             <Route exact path="/" component={DashBoard} page="home" />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
           </Switch>
-        </BrowserRouter>
+        </Router>
       </div>
     )
   }
