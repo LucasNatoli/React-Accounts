@@ -19,9 +19,11 @@ class App extends React.Component {
     });
   }
 
-  render() {
+  componentDidUpdate() {
     const { notify } = this.props;
     if (notify && notify.message) { Notify(notify) }
+  }
+  render() {
     return (
       <div className="accounts-app">
         <Router>
