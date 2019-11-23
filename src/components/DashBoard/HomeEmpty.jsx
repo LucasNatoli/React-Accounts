@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Empty } from 'antd'
 import './HomeEmpty.css'
 
-const HomeEmpty = ({ loggedIn, userName }) => (
+const HomeEmpty = ({ loggedIn, userName, checkSessionClick }) => (
   <Empty
     image="https://gw.alipayobjects.com/mdn/miniapp_social/afts/img/A*pevERLJC9v0AAAAAAAAAAABjAQAAAQ/original"
     imageStyle={{
@@ -21,7 +21,7 @@ const HomeEmpty = ({ loggedIn, userName }) => (
     </div> : ''}
     {loggedIn ? <div>
       <Button type="secondary" href="/logout">LogOut</Button>
-      <Button type="secondary">CheckSession</Button>
+      <Button type="secondary" onClick={checkSessionClick}>CheckSession</Button>
     </div> : ''}
   </Empty>
 )

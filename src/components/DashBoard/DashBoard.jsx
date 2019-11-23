@@ -12,9 +12,20 @@ class DashBoard extends React.Component {
     "user": {}
   }
 
+  constructor(props) {
+    super(props)
+    this.checkSession = this.checkSession.bind(this)
+  }
+  checkSession() {
+    console.log('chekich session')
+    const { dispatch } = this.props;
+    dispatch(accountActions.checkSession())
+  }
+
   render() {
     const { authentication } = this.props
     const { Content, Header } = Layout;
+    const user = authentication.user
     return (
       <Layout className="dashboard">
         <Layout>
@@ -22,7 +33,11 @@ class DashBoard extends React.Component {
             <div className="logo"><img src={logo} height={48} /></div>
           </Header>
           <Content>
-            <HomeEmpty loggedIn={authentication.loggedIn} userName={authentication.user ? authentication.user.fullName : 'none'} />
+            <HomeEmpty 
+              loggedIn={authentication.loggedIn} 
+              checkSessionClick={this.checkSession}
+              userName={user ? user.fullName : 'none'} 
+            />
           </Content>
         </Layout>
       </Layout>
