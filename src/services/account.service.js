@@ -1,6 +1,6 @@
-import { 
+import {
     //authHeader, 
-    config 
+    config
 } from '../helpers';
 import { SHA3 } from 'sha3'
 
@@ -24,11 +24,13 @@ function login(email, password) {
 
     return fetch(`${config.apiUrl}/login`, requestOptions)
         .then(handleResponse)
-        .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('user', JSON.stringify(user));
-            return user;
-        });
+        .then(
+            user => {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('user', JSON.stringify(user));
+                return user;
+            }
+        );
 }
 
 function logout() {
@@ -37,12 +39,12 @@ function logout() {
         headers: { 'Content-Type': 'application/json' }
     };
     // remove user from local storage to log user out
-    localStorage.removeItem('user');
+    localStorage.clear()
     return fetch(`${config.apiUrl}/logout`, requestOptions).then(handleResponse);
 }
 
 function register(user) {
-    
+
     const hash = new SHA3(512)
     hash.update(user.password)
     const body = {
