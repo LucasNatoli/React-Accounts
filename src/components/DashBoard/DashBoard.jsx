@@ -30,7 +30,7 @@ class DashBoard extends React.Component {
       <Layout className="dashboard">
         <Layout>
           <Header>
-            <div className="logo"><img src={logo} height={48} /></div>
+            <div className="logo"><img src={logo} height={48} alt="420"/></div>
           </Header>
           <Content>
             <HomeEmpty 
