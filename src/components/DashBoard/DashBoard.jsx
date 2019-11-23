@@ -36,7 +36,7 @@ class DashBoard extends React.Component {
             <HomeEmpty 
               loggedIn={authentication.loggedIn} 
               checkSessionClick={this.checkSession}
-              userName={user ? user.fullName : 'none'} 
+              userName={user ? user.fullname : 'none'} 
             />
           </Content>
         </Layout>
