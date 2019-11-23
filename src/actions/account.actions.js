@@ -77,8 +77,7 @@ function checkSession() {
                 }
             );
     };
-    const empty = {}
-    function request() { return { type: accountConstants.CHECK_SESSION_REQUEST, empty } }
+    function request() { return { type: accountConstants.CHECK_SESSION_REQUEST,  } }
     function success(user) { return { type: accountConstants.CHECK_SESSION_SUCCESS, user } }
     function failure(error) { return { type: accountConstants.CHECK_SESSION_FAILURE, error } }
 }
