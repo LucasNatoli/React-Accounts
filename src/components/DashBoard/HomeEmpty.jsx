@@ -11,17 +11,17 @@ const HomeEmpty = ({ loggedIn, userName, checkSessionClick }) => (
     className="home-empty"
     description={
       <span>
-        Customize <a href="#API">{userName}</a>
+        You are <a href="#API">{userName}</a>
       </span>
     }
   >
     {!loggedIn ? <div>
       <Button type="secondary" href="/register">Register</Button>
-      <Button type="primary" href="/login">LogIn</Button>
+      <Button type="primary" href="/login">Log In</Button>
     </div> : ''}
     {loggedIn ? <div>
-      <Button type="secondary" href="/logout">LogOut</Button>
-      <Button type="secondary" onClick={checkSessionClick}>CheckSession</Button>
+      <Button type="secondary" href="/logout">Log Out</Button>
+      <Button type="secondary" onClick={checkSessionClick}>Check Session</Button>
     </div> : ''}
   </Empty>
 )
