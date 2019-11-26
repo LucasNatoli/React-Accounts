@@ -1,7 +1,7 @@
 import React from 'react'
 import { Layout, } from 'antd'
 import HomeEmpty from './HomeEmpty'
-import logo from './420logo.png';
+import logo from '../420logo.png';
 import './DashBoard.css';
 import { accountActions } from '../../actions'
 import { connect } from 'react-redux'
@@ -33,7 +33,6 @@ class DashBoard extends React.Component {
     const user = authentication.user
     return (
       <Layout className="dashboard">
-        <Layout>
           <Header>
             <div className="logo"><img src={logo} height={48} alt="420"/></div>
           </Header>
@@ -45,7 +44,6 @@ class DashBoard extends React.Component {
               userName={user ? user.fullname : 'none'} 
             />
           </Content>
-        </Layout>
       </Layout>
     );
   }
