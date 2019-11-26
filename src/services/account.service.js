@@ -68,13 +68,10 @@ function login(email, password) {
 }
 
 function logout() {
-    const requestOptions = {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-    };
     // remove user from local storage to log user out
     localStorage.clear()
-    return fetch(`${config.apiUrl}/logout`, requestOptions).then(handleResponse);
+
+    return Promise.resolve()
 }
 
 function register(user) {
