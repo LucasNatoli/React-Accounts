@@ -17,7 +17,6 @@ class DashBoard extends React.Component {
     this.checkSession = this.checkSession.bind(this)
   }
   checkSession() {
-    console.log('chekich session')
     const { dispatch } = this.props;
     dispatch(accountActions.checkSession())
   }
