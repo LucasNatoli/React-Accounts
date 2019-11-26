@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Form, Icon, Input } from 'antd';
+import { Button, Col, Form, Icon, Input, Layout, Row } from 'antd';
 import './RegisterPage.css'
 import { accountActions } from '../../actions'
 import { connect } from 'react-redux'
+import logo from '../420logo.png';
 
 class RegisterForm extends React.Component {
 
@@ -69,83 +70,95 @@ class RegisterForm extends React.Component {
             },
         };
 
+        const { Content, Header } = Layout;
 
         return (
-            <Form {...formItemLayout} onSubmit={this.handleSubmit} className="register-form">
-                <Form.Item label="Full Name">
-                    {getFieldDecorator('fullname', {
-                        rules: [{ required: true, message: 'Please input your full name!' }],
-                    })(
-                        <Input
-                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                            placeholder="Full Name"
-                        />,
-                    )}
-                </Form.Item>
-                <Form.Item label="E-mail">
-                    {getFieldDecorator('email', {
-                        rules: [{ required: true, message: 'Please input your email!' }],
-                    })(
-                        <Input
-                            prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                            placeholder="Email"
-                        />,
-                    )}
-                </Form.Item>
-                <Form.Item label="Phone Nbr.">
-                    {getFieldDecorator('phone', {
-                        rules: [{ required: true, message: 'Please input your phone number!' }],
-                    })(
-                        <Input
-                            prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                            placeholder="Phone"
-                        />,
-                    )}
-                </Form.Item>
-                <Form.Item label="Password" hasFeedback>
-                    {getFieldDecorator('password', {
-                        rules: [
-                            {
-                                required: true,
-                                message: 'Please input your password!'
-                            },
-                            {
-                                validator: this.validateToNextPassword,
-                            },
-                        ],
-                    })(
-                        <Input.Password
-                            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                            placeholder="Password"
-                        />,
-                    )}
-                </Form.Item>
-                <Form.Item label="Confirm Password" hasFeedback>
-                    {getFieldDecorator('confirm-password', {
-                        rules: [
-                            {
-                                required: true,
-                                message: 'Please confirm the entered password!'
-                            },
-                            {
-                                validator: this.compareToFirstPassword,
-                            }
-                        ],
-                    })(
-                        <Input.Password
-                            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                            placeholder="Confirm Password"
-                            onBlur={this.handleConfirmBlur}
-                        />,
-                    )}
-                </Form.Item>
-                <Form.Item  {...tailFormItemLayout}>
-                    <Button type="primary" htmlType="submit" className="register-form-button">
-                        Register
+            <Layout>
+                <Header>
+                    <div className="logo"><img src={logo} height={48} alt="420" /></div>
+                </Header>
+                <Content>
+                    <Row type="flex" align="middle">
+                        <Col xs={{ offset: 2, span: 20 }} lg={{ span: 6, offset: 8 }}>
+                            <Form {...formItemLayout} onSubmit={this.handleSubmit} className="register-form">
+                                <Form.Item label="Full Name">
+                                    {getFieldDecorator('fullname', {
+                                        rules: [{ required: true, message: 'Please input your full name!' }],
+                                    })(
+                                        <Input
+                                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                            placeholder="Full Name"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="E-mail">
+                                    {getFieldDecorator('email', {
+                                        rules: [{ required: true, message: 'Please input your email!' }],
+                                    })(
+                                        <Input
+                                            prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                            placeholder="Email"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Phone Nbr.">
+                                    {getFieldDecorator('phone', {
+                                        rules: [{ required: true, message: 'Please input your phone number!' }],
+                                    })(
+                                        <Input
+                                            prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                            placeholder="Phone"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Password" hasFeedback>
+                                    {getFieldDecorator('password', {
+                                        rules: [
+                                            {
+                                                required: true,
+                                                message: 'Please input your password!'
+                                            },
+                                            {
+                                                validator: this.validateToNextPassword,
+                                            },
+                                        ],
+                                    })(
+                                        <Input.Password
+                                            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                            placeholder="Password"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Confirm Password" hasFeedback>
+                                    {getFieldDecorator('confirm-password', {
+                                        rules: [
+                                            {
+                                                required: true,
+                                                message: 'Please confirm the entered password!'
+                                            },
+                                            {
+                                                validator: this.compareToFirstPassword,
+                                            }
+                                        ],
+                                    })(
+                                        <Input.Password
+                                            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                            placeholder="Confirm Password"
+                                            onBlur={this.handleConfirmBlur}
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item  {...tailFormItemLayout}>
+                                    <Button type="primary" htmlType="submit" className="register-form-button">
+                                        Register
                     </Button>
-                    Or <a href="/login">Login now!</a>
-                </Form.Item>
-            </Form>
+                                    Or <a href="/login">Login now!</a>
+                                </Form.Item>
+                            </Form>
+                        </Col>
+                    </Row>
+                </Content>
+            </Layout>
         );
     }
 }
