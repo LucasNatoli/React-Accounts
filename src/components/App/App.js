@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { history } from '../../helpers';
 import { notifyActions } from '../../actions';
@@ -8,6 +8,7 @@ import LoginPage from '../LoginPage/LoginPage'
 import RegisterPage from '../RegisterPage/RegisterPage'
 import './App.css';
 import Notify from '../Notify/Notify'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="accounts-app">
-        <Router>
+        <Router history={ history }>
           <Switch>
             <Route exact path="/" component={DashBoard} page="home" />
             <Route path="/login" component={LoginPage} />
