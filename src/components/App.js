@@ -1,13 +1,13 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { history } from '../../helpers';
-import { notifyActions } from '../../actions';
-import DashBoard from '../DashBoard/DashBoard';
-import LoginPage from '../LoginPage/LoginPage'
-import RegisterPage from '../RegisterPage/RegisterPage'
-import './App.css';
-import Notify from '../Notify/Notify'
+import { history } from '../helpers';
+import { notifyActions } from '../actions';
+import DashBoard from './DashBoard';
+import LoginPage from './LoginPage'
+import RegisterPage from './RegisterPage'
+import './css/App.css';
+import Notify from './Notify'
 
 
 class App extends React.Component {

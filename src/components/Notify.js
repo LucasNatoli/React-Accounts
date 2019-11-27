@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'antd'
-import { notifyConstants } from '../../constants'
+import { notifyConstants } from '../constants'
 
 function Notify (notify) {
   const props = {

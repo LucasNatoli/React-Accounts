@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Empty } from 'antd'
-import './HomeEmpty.css'
+import './css/HomeEmpty.css'
 
 const HomeEmpty = ({ loggedIn, userName, checkSessionClick, logoutClick }) => (
   <Empty
