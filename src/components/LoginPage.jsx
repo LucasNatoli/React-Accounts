@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, Col, Checkbox, Form, Icon, Input, Row, Layout } from 'antd';
-import './LoginPage.css'
-import { accountActions } from '../../actions'
+import './css/LoginPage.css'
+import { accountActions } from '../actions'
 import { connect } from 'react-redux'
-import logo from '../420logo.png';
+import logo from './assets/420logo.png';
 
 class LoginForm extends React.Component {
     state = {

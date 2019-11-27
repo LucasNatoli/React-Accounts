@@ -1,9 +1,9 @@
 import React from 'react'
 import { Layout, } from 'antd'
 import HomeEmpty from './HomeEmpty'
-import logo from '../420logo.png';
-import './DashBoard.css';
-import { accountActions } from '../../actions'
+import logo from './assets/420logo.png';
+import './css/DashBoard.css';
+import { accountActions } from '../actions'
 import { connect } from 'react-redux'
 
 class DashBoard extends React.Component {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, Col, Form, Icon, Input, Layout, Row } from 'antd';
-import './RegisterPage.css'
-import { accountActions } from '../../actions'
+import './css/RegisterPage.css'
+import { accountActions } from '../actions'
 import { connect } from 'react-redux'
-import logo from '../420logo.png';
+import logo from './assets/420logo.png';
 
 class RegisterForm extends React.Component {
 
