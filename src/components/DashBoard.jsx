@@ -14,12 +14,12 @@ class DashBoard extends React.Component {
 
   constructor(props) {
     super(props)
-    this.checkSession = this.checkSession.bind(this)
+    this.checkToken = this.checkToken.bind(this)
     this.logoutUser = this.logoutUser.bind(this)
   }
-  checkSession() {
+  checkToken() {
     const { dispatch } = this.props;
-    dispatch(accountActions.checkSession())
+    dispatch(accountActions.checkToken())
   }
   logoutUser() {
     const { dispatch } = this.props
@@ -39,7 +39,7 @@ class DashBoard extends React.Component {
           <Content>
             <HomeEmpty 
               loggedIn={authentication.loggedIn} 
-              checkSessionClick={this.checkSession}
+              checkTokenClick={this.checkToken}
               logoutClick={this.logoutUser}
               userName={user ? user.fullname : 'none'} 
             />

@@ -24,16 +24,16 @@ export function authentication(state = initialState, action) {
         loggedIn: false
       };
       
-    case accountConstants.CHECK_SESSION_REQUEST:
+    case accountConstants.CHECK_TOKEN_REQUEST:
       return {
         loading: true,
       };
-    case accountConstants.CHECK_SESSION_SUCCESS:
+    case accountConstants.CHECK_TOKEN_SUCCESS:
       return {
         loading: false,
         loggedIn: true,
       };
-    case accountConstants.CHECK_SESSION_FAILURE:
+    case accountConstants.CHECK_TOKEN_FAILURE:
       return {
         loading: false,
         loggedIn: false,
