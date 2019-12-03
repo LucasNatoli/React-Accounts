@@ -5,20 +5,20 @@ import {
 import { SHA3 } from 'sha3'
 
 export const accountsService = {
-    checkSession,
+    checkToken,
     login,
     logout,
     register,
 };
 
-function checkSession() {
+function checkToken() {
 
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
 
-    return fetch(`${config.apiUrl}/check-session`, requestOptions)
+    return fetch(`${config.apiUrl}/check-token`, requestOptions)
         .then(handleResponse)
         .then(
             results => {

@@ -7,7 +7,7 @@ export const accountActions = {
     login,
     logout,
     register,
-    checkSession,
+    checkToken,
 };
 
 function login(email, password) {
@@ -61,11 +61,11 @@ function register(user) {
 }
 
 
-function checkSession() {
+function checkToken() {
     return dispatch => {
         dispatch(request());
 
-        accountsService.checkSession()
+        accountsService.checkToken()
             .then(
                 results => { 
                     dispatch(success());
@@ -77,7 +77,7 @@ function checkSession() {
                 }
             );
     };
-    function request() { return { type: accountConstants.CHECK_SESSION_REQUEST,  } }
-    function success(user) { return { type: accountConstants.CHECK_SESSION_SUCCESS, user } }
-    function failure(error) { return { type: accountConstants.CHECK_SESSION_FAILURE, error } }
+    function request() { return { type: accountConstants.CHECK_TOKEN_REQUEST,  } }
+    function success(user) { return { type: accountConstants.CHECK_TOKEN_SUCCESS, user } }
+    function failure(error) { return { type: accountConstants.CHECK_TOKEN_FAILURE, error } }
 }
