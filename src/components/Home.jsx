@@ -2,11 +2,11 @@ import React from 'react'
 import { Layout, } from 'antd'
 import HomeEmpty from './HomeEmpty'
 import logo from './assets/420logo.png';
-import './css/DashBoard.css';
+import './css/Home.css';
 import { accountActions } from '../actions'
 import { connect } from 'react-redux'
 
-class DashBoard extends React.Component {
+class Home extends React.Component {
   state = {
     "loggedIn": false,
     "user": {}
@@ -32,7 +32,7 @@ class DashBoard extends React.Component {
     const { Content, Header } = Layout;
     const user = authentication.user
     return (
-      <Layout className="dashboard">
+      <Layout className="home">
           <Header>
             <div className="logo"><img src={logo} height={48} alt="420"/></div>
           </Header>
@@ -54,4 +54,4 @@ function mapStateToProps(state) {
   return { authentication }
 }
 
-export default connect(mapStateToProps)(DashBoard);
+export default connect(mapStateToProps)(Home);
