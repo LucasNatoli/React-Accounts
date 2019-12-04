@@ -3,7 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { history } from '../helpers';
 import { notifyActions } from '../actions';
-import DashBoard from './DashBoard';
+import Home from './Home';
 import LoginPage from './LoginPage'
 import RegisterPage from './RegisterPage'
 import './css/App.css';
@@ -29,7 +29,7 @@ class App extends React.Component {
       <div className="accounts-app">
         <Router history={ history }>
           <Switch>
-            <Route exact path="/" component={DashBoard} page="home" />
+            <Route exact path="/" component={Home} page="home" />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
           </Switch>
