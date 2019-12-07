@@ -110,7 +110,7 @@ function updateAccountInfo(accountInfo) {
         dispatch(request())
         accountsService.updateAccountInfo(accountInfo).then(
             results => {
-                dispatch(success())
+                dispatch(success(results))
             },
             error => {
                 dispatch(failure(error.toString))
@@ -119,7 +119,7 @@ function updateAccountInfo(accountInfo) {
         )
     }
     function request() { return { type: accountConstants.UPDATE_ACCOUNT_REQUEST,  } }
-    function success() { return { type: accountConstants.UPDATE_ACCOUNT_SUCCESS,  } }
+    function success(accountInfo) { return { type: accountConstants.UPDATE_ACCOUNT_SUCCESS, accountInfo} }
     function failure(error) { return { type: accountConstants.ACCOUNT_INFO_FAILURE, error } }
 
 }

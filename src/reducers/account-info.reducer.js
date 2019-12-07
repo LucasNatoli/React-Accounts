@@ -19,7 +19,7 @@ export function accountInfo(state = { fullname : '', email : '', phone : '', fet
     case accountConstants.UPDATE_ACCOUNT_SUCCESS:
       return Object.assign(
         {},
-        action.user,
+        action.accountInfo,
         { fetching: false }
       );
     case accountConstants.UPDATE_ACCOUNT_FAILURE:
