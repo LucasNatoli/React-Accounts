@@ -11,7 +11,7 @@ const HomeEmpty = ({ loggedIn, userName, checkTokenClick, logoutClick }) => (
     className="home-empty"
     description={
       <span>
-        You are <a href="#API">{userName}</a>
+        You are <a href="user-account">{userName}</a>
       </span>
     }
   >

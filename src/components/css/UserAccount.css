@@ -1,0 +1,31 @@
+.user-account-card {
+  margin-top: 2vh;
+}
+.user-account-content {
+  min-height: 100vh;
+}
+/* 
+.user-account-form-item {
+  height: 45px;
+} */
+.ant-form-item-label {
+  text-align: left;
+  line-height: 2vh;
+}
+.useraccount-form-button {
+ width: 100%;
+}
+.ant-col .ant-form-item-label {
+  padding-bottom: 0px;
+  height: 23px;
+  vertical-align: top;
+}
+
+.ant-form-item-required::before {
+  content: none;
+}
+
+header.ant-layout-header {
+  display: flex;
+  justify-content: space-between;
+}

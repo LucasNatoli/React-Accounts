@@ -6,6 +6,7 @@ import { notifyActions } from '../actions';
 import Home from './Home';
 import LoginPage from './LoginPage'
 import RegisterPage from './RegisterPage'
+import UserAccount from './UserAccount';
 import './css/App.css';
 import Notify from './Notify'
 
@@ -24,6 +25,7 @@ class App extends React.Component {
     const { notify } = this.props;
     if (notify && notify.message) { Notify(notify) }
   }
+  
   render() {
     return (
       <div className="accounts-app">
@@ -32,6 +34,7 @@ class App extends React.Component {
             <Route exact path="/" component={Home} page="home" />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
+            <Route path="/user-account" component={UserAccount} />
           </Switch>
         </Router>
       </div>
