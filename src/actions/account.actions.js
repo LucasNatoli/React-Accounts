@@ -8,6 +8,8 @@ export const accountActions = {
     logout,
     register,
     checkToken,
+    getAccountInfo,
+    updateAccountInfo
 };
 
 function login(email, password) {
@@ -68,7 +70,7 @@ function checkToken() {
         accountsService.checkToken()
             .then(
                 results => { 
-                    dispatch(success());
+                    dispatch(success(results));
                     dispatch(notifyActions.success(results[0].serverTime));
                 },
                 error => {
@@ -80,4 +82,44 @@ function checkToken() {
     function request() { return { type: accountConstants.CHECK_TOKEN_REQUEST,  } }
     function success(user) { return { type: accountConstants.CHECK_TOKEN_SUCCESS, user } }
     function failure(error) { return { type: accountConstants.CHECK_TOKEN_FAILURE, error } }
+}
+
+function getAccountInfo() {
+    return dispatch => {
+        dispatch(request());
+
+        accountsService.getAccountInfo()
+            .then(
+                results => { 
+                    dispatch(success(results));
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                    dispatch(notifyActions.error(error.toString()));
+                }
+            );
+    };
+    function request() { return { type: accountConstants.ACCOUNT_INFO_REQUEST,  } }
+    function success(accountInfo) { return { type: accountConstants.ACCOUNT_INFO_SUCCESS, accountInfo } }
+    function failure(error) { return { type: accountConstants.ACCOUNT_INFO_FAILURE, error } }
+}
+
+function updateAccountInfo(accountInfo) {
+
+    return dispatch => {
+        dispatch(request())
+        accountsService.updateAccountInfo(accountInfo).then(
+            results => {
+                dispatch(success())
+            },
+            error => {
+                dispatch(failure(error.toString))
+                dispatch(notifyActions.error(error.toString()))
+            }
+        )
+    }
+    function request() { return { type: accountConstants.UPDATE_ACCOUNT_REQUEST,  } }
+    function success() { return { type: accountConstants.UPDATE_ACCOUNT_SUCCESS,  } }
+    function failure(error) { return { type: accountConstants.ACCOUNT_INFO_FAILURE, error } }
+
 }
