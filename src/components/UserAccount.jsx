@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-  Avatar, Button, Card, Col, Form, Icon, Input, Layout, Row, Skeleton, Switch
-} from 'antd';
+import { Button, Card, Col, Form, Icon, Input, Layout, Row, Skeleton, Switch } from 'antd';
 import './css/UserAccount.css'
 import { accountActions } from '../actions'
 import { connect } from 'react-redux'
@@ -88,7 +86,6 @@ class UserAccountPage extends React.Component {
               checked={loading}
               onChange={this.onLoadingModeChange}
             />
-            <Avatar src="https://i.pravatar.cc/300" />
           </div>
         </Header>
         <Content className="user-account-content">
@@ -96,10 +93,8 @@ class UserAccountPage extends React.Component {
             <Col xs={{ offset: 1, span: 22 }} lg={{ span: 8, offset: 8 }}>
               <Card title="Account Information" extra={editModeSwitch} className="user-account-card">
                 <Form onSubmit={this.handleSubmit} className="useraccount-form">
-                  <Skeleton loading={loading} avatar active paragraph={{ rows: 2 }}>
-                    <Meta
-                      //avatar={avatar}
-                      description={<div>
+                  <Skeleton loading={loading} active paragraph={{ rows: 8 }}>
+                    <Meta description={<div>
                         <Form.Item {...formItemLayout} label="Full Name" className="user-account-form-item">
                           {getFieldDecorator('fullname', {
                             rules: [{ required: true, message: 'Please input your full name!' }],
