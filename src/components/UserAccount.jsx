@@ -47,13 +47,6 @@ class UserAccountPage extends React.Component {
 
     const { editing } = this.state;
 
-    const editModeSwitch = <Switch
-      checked={editing}
-      onChange={this.onEditModeToggle}
-      checkedChildren={iconCheck}
-      unCheckedChildren={iconEdit}
-    />
-
     const tailFormItemLayout = {
       wrapperCol: {
         xs: {
