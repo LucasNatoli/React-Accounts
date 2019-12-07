@@ -1,15 +1,49 @@
 import {
-    authHeader, 
+    authHeader,
     config
 } from '../helpers';
 import { SHA3 } from 'sha3'
 
 export const accountsService = {
     checkToken,
+    getAccountInfo,
     login,
     logout,
+    updateAccountInfo,
     register,
 };
+
+
+function updateAccountInfo(accountinfo) {
+
+    const requestOptions = {
+        method: 'PUT',
+        headers: authHeader(),
+        body: JSON.stringify(accountinfo)
+    };
+
+    return fetch(`${config.apiUrl}/account-info`, requestOptions)
+        .then(handleResponse)
+        .then(user => {
+            localStorage.setItem('user', JSON.stringify(user));            
+            return user;
+        });
+}
+function getAccountInfo() {
+
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`${config.apiUrl}/account-info`, requestOptions)
+        .then(handleResponse)
+        .then(
+            results => {
+                return results;
+            }
+        );
+}
 
 function checkToken() {
 

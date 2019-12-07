@@ -8,14 +8,15 @@ import { connect } from 'react-redux'
 
 class Home extends React.Component {
   state = {
-    "loggedIn": false,
-    "user": {}
+    "loggedIn": (JSON.parse(localStorage.getItem('user'))),
+    "user": JSON.parse(localStorage.getItem('user'))
   }
 
   constructor(props) {
     super(props)
     this.checkToken = this.checkToken.bind(this)
     this.logoutUser = this.logoutUser.bind(this)
+
   }
   checkToken() {
     const { dispatch } = this.props;
@@ -28,9 +29,10 @@ class Home extends React.Component {
   }
 
   render() {
-    const { authentication } = this.props
     const { Content, Header } = Layout;
-    const user = authentication.user
+    const user = JSON.parse(localStorage.getItem('user'))
+    const loggedIn = (user!==null)
+    
     return (
       <Layout className="home">
           <Header>
@@ -38,7 +40,7 @@ class Home extends React.Component {
           </Header>
           <Content>
             <HomeEmpty 
-              loggedIn={authentication.loggedIn} 
+              loggedIn={loggedIn} 
               checkTokenClick={this.checkToken}
               logoutClick={this.logoutUser}
               userName={user ? user.fullname : 'none'} 
