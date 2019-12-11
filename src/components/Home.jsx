@@ -16,7 +16,7 @@ class Home extends React.Component {
     super(props)
     this.checkToken = this.checkToken.bind(this)
     this.logoutUser = this.logoutUser.bind(this)
-
+    this.checkStatus = this.checkStatus.bind(this)
   }
   checkToken() {
     const { dispatch } = this.props;
@@ -27,7 +27,11 @@ class Home extends React.Component {
     dispatch(accountActions.logout)
     this.props.history.push('/login')
   }
+  checkStatus() {
+    const { dispatch }  = this.props
+    dispatch(accountActions.getServerStatus())
 
+  }
   render() {
     const { Content, Header } = Layout;
     const user = JSON.parse(localStorage.getItem('user'))
@@ -42,6 +46,7 @@ class Home extends React.Component {
             <HomeEmpty 
               loggedIn={loggedIn} 
               checkTokenClick={this.checkToken}
+              checkStatusClick={this.checkStatus}
               logoutClick={this.logoutUser}
               userName={user ? user.fullname : 'none'} 
             />

@@ -4,6 +4,7 @@ import { notifyActions } from './notify.actions';
 import { history } from '../helpers';
 
 export const accountActions = {
+    getServerStatus,
     login,
     logout,
     register,
@@ -12,6 +13,27 @@ export const accountActions = {
     updateAccountInfo
 };
 
+function getServerStatus() {
+    return dispatch => {
+        dispatch(request())
+        accountsService.getServerStatus()
+            .then(
+                status => {
+                    dispatch(success(status))
+                    dispatch(notifyActions.success(status.serverTime))
+                },
+                err => {
+                    dispatch(failure(err.toString()))
+                    dispatch(notifyActions.error(err.toString()))
+                }
+            )
+    }
+
+    function request() { return { type: accountConstants.CHECK_TOKEN_REQUEST } }
+    function success(status) { return { type: accountConstants.GET_SERVER_STATUS_SUCCESS, status } }
+    function failure(err) { return { type: accountConstants.GET_SERVER_STATUS_FAILURE, err } }
+
+}
 function login(email, password) {
     return dispatch => {
         dispatch(request({ email: email }));
@@ -61,7 +83,6 @@ function register(user) {
     function success(user) { return { type: accountConstants.REGISTER_SUCCESS, user } }
     function failure(error) { return { type: accountConstants.REGISTER_FAILURE, error } }
 }
-
 
 function checkToken() {
     return dispatch => {

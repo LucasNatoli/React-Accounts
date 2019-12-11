@@ -1,42 +1,55 @@
 import { accountConstants } from '../constants';
 
 let user = JSON.parse(localStorage.getItem('user'));
-const initialState = user ? { loggedIn: true, user, loading: false } : { loggedIn: false, loading: false };
+const initialState = user ? { user, fetching: false } : { fetching: false };
 
 export function authentication(state = initialState, action) {
   switch (action.type) {
+
+    case accountConstants.GET_SERVER_STATUS_REQUEST:
+      return { loading: true }
+    case accountConstants.GET_SERVER_STATUS_SUCCESS:
+      return { 
+        status: action.status,
+        loading: false 
+      }
+      
+    case accountConstants.GET_SERVER_STATUS_FAILURE:
+      return {
+        err: action.err,
+        loading: false 
+      }
+
     case accountConstants.LOGIN_REQUEST:
       return {
-        loggingIn: true,
+        fetching: true,
         user: action.user
       };
     case accountConstants.LOGIN_SUCCESS:
       return {
-        loggedIn: true,
+        fetching: false,
         user: action.user
       };
     case accountConstants.LOGIN_FAILURE:
       return {
-        loggedIn: false
+        fetching: false
       };
     case accountConstants.LOGOUT:
       return {
-        loggedIn: false
+        fetching: false
       };
       
     case accountConstants.CHECK_TOKEN_REQUEST:
       return {
-        loading: true,
+        fetching: true,
       };
     case accountConstants.CHECK_TOKEN_SUCCESS:
       return {
-        loading: false,
-        loggedIn: true,
+        fetching: false,
       };
     case accountConstants.CHECK_TOKEN_FAILURE:
       return {
-        loading: false,
-        loggedIn: false,
+        fetching: false,
       };
 
     default:

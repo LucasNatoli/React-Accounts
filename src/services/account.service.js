@@ -5,6 +5,7 @@ import {
 import { SHA3 } from 'sha3'
 
 export const accountsService = {
+    getServerStatus,
     checkToken,
     getAccountInfo,
     login,
@@ -13,6 +14,21 @@ export const accountsService = {
     register,
 };
 
+
+function getServerStatus() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`${config.apiUrl}/status`, requestOptions)
+        .then(handleResponse)
+        .then(
+            results => {
+                return results;
+            }
+        );
+}
 
 function updateAccountInfo(accountinfo) {
 
@@ -25,7 +41,7 @@ function updateAccountInfo(accountinfo) {
     return fetch(`${config.apiUrl}/account-info`, requestOptions)
         .then(handleResponse)
         .then(user => {
-            localStorage.setItem('user', JSON.stringify(user));            
+            localStorage.setItem('user', JSON.stringify(user));
             return user;
         });
 }
