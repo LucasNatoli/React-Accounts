@@ -2,17 +2,21 @@
     height: 100vh;
 }
 
- .ant-layout-header {
-    padding: 0  0 0 1em;
+.ant-layout-header {
+    padding: 0 0 0 1em;
     display: flex;
     /*   justify-content: flex-end; */
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cccccc+57,648cff+82 */
-    background: #fafafa; /* Old browsers */
+    background: #fafafa;
+    /* Old browsers */
     line-height: 54px;
-    height: 54px; 
+    height: 54px;
 }
+
 #content {
     min-height: 100vh;
-  }
+}
 
-
+.user-details {
+    margin-right: 15px;
+}
